@@ -1,16 +1,16 @@
 #!/bin/sh
 
-NAMEARRAY=(saito,sunouchi,arai,horie,nakano,bekki,usui,kawashima,makabe,hisayuki)
-NAMEARRAY[0]="斎藤"
-NAMEARRAY[1]="簾内"
-NAMEARRAY[2]="荒井"
-NAMEARRAY[3]="堀江"
-NAMEARRAY[4]="中野"
-NAMEARRAY[5]="戸次"
-NAMEARRAY[6]="薄井"
-NAMEARRAY[7]="川島"
-NAMEARRAY[8]="真壁"
-NAMEARRAY[9]="久行"
+NAMEARRAY=(s,s,a,h,n,b,u,k,m,h)
+NAMEARRAY[0]="SITU"
+NAMEARRAY[1]="SNUT"
+NAMEARRAY[2]="ARI"
+NAMEARRAY[3]="HRE"
+NAMEARRAY[4]="NKN"
+NAMEARRAY[5]="BKI"
+NAMEARRAY[6]="USI"
+NAMEARRAY[7]="KWSM"
+NAMEARRAY[8]="MKB"
+NAMEARRAY[9]="HSYK"
 
 NUMARRAY=()
 for var in {0..9};
