@@ -1,5 +1,20 @@
 #!/bin/bash
 
+#cpコマンドでなく、GNUのgcpコマンドを使う
+#なければHomebrewでインストール、Homebrewもなければ自身でのインストールをうながす        
+
+if type "gcp" > /dev/null 2>&1;then
+  echo "gcp command was found"
+  else
+  if type "brew" > /dev/null 2>&1;then
+     brew install coreutils
+  else
+    echo "Homebrewのインストールまたは、手動による coreutils パッケージのインストールが必要とされています。コマンドを終了します。"
+    exit 1
+  fi
+fi
+exit 1
+
 # Settings
 backupfolderpath=~/.backup #ベースフォルダ名
 VERSION="0.01"
@@ -44,8 +59,11 @@ createNowBackupFolder(){
 }
 #データのバックアップ $1: ファイル名
 backupData(){
-  name=$foldername/$1
-  cp -r $1 $name
+  #絶対パスを取得
+  absolute=$(cd $(dirname $1) && pwd)
+  name=$foldername$absolute/$1
+  #--parentsオプションは親の構造をまるごとコピーしてくれる=>MACにはない
+  gcp -r -v --parents $1 $name
   echo $name にバックアップを作成しました。
 }
 
@@ -61,6 +79,7 @@ listup(){
 case $1 in
   '-l' )
     echo "指定したファイルのリストを表示します。"
+    listup
     shift
     exit 0
     ;;
